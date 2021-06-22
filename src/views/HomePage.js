@@ -1,12 +1,39 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-export class HomePage extends Component {
-  state = {};
-  static propTypes = {};
+import { Link } from "react-router-dom";
+//Fetch
+import { fetchTrendingMovies } from "../services/fetchMoviesApi";
+
+class HomePage extends Component {
+  state = {
+    movies: [],
+  };
+
+  // static propTypes = {};
+
+  async componentDidMount() {
+    const trendingMovies = await fetchTrendingMovies();
+
+    this.setState({ movies: trendingMovies });
+  }
 
   render() {
-    return <div></div>;
+    const { movies } = this.state;
+    // console.log(this.props.match.url);
+
+    return (
+      <div>
+        <h2>Trending today</h2>
+        <ul>
+          {movies.map(({ title, id }) => (
+            <li key={id}>
+              <Link to={`/movies/${id}`}>{title}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 

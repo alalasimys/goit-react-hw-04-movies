@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 export class Header extends Component {
-  static propTypes = {};
+  // static propTypes = {};
 
   render() {
     return (
