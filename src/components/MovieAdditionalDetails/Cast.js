@@ -30,27 +30,33 @@ class Cast extends Component {
 
     return (
       <div>
-        <ul>
-          {cast.map(({ name, cast_id, character, profile_path }) => (
-            <li key={cast_id}>
-              {profile_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${profile_path}`}
-                  alt={name}
-                />
-              ) : (
-                <img
-                  width="200"
-                  src="https://kazut.pl/ru/wp-content/themes/Aether/library/img/default-image.jpg"
-                  alt={name}
-                />
-              )}
+        {cast.length > 0 ? (
+          <ul>
+            {cast.map(({ name, cast_id, character, profile_path }) => (
+              <li key={cast_id}>
+                {profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+                    alt={name}
+                  />
+                ) : (
+                  <img
+                    width="200"
+                    src="https://kazut.pl/ru/wp-content/themes/Aether/library/img/default-image.jpg"
+                    alt={name}
+                  />
+                )}
 
-              <p>{name}</p>
-              <p>Character: {character}</p>
-            </li>
-          ))}
-        </ul>
+                <p>{name}</p>
+                <p>Character: {character}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>
+            <p>We don't have any information about cast for this movie.</p>
+          </div>
+        )}
       </div>
     );
   }

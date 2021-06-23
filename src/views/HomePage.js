@@ -1,38 +1,36 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
 
-import { Link } from "react-router-dom";
+//Components
+import MovieList from "../components/MovieList";
 //Fetch
 import { fetchTrendingMovies } from "../services/fetchMoviesApi";
 
 class HomePage extends Component {
   state = {
     movies: [],
+    isLoading: false,
   };
 
   // static propTypes = {};
 
   async componentDidMount() {
+    this.setState({ isLoading: true });
     const trendingMovies = await fetchTrendingMovies();
 
-    this.setState({ movies: trendingMovies });
+    this.setState({ movies: trendingMovies, isLoading: false });
   }
 
   render() {
-    const { movies } = this.state;
-
+    const { movies, isLoading } = this.state;
     return (
       <div>
         <h2>Trending today</h2>
-        <ul>
-          {movies.map(({ title, id }) => (
-            <li key={id}>
-              <Link to={`/movies/${id}`}>
-                <h4>{title}</h4>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {isLoading ? (
+          <h2>Loading...</h2>
+        ) : (
+          <MovieList movies={movies} /*from={this.props.location}*/ />
+        )}
       </div>
     );
   }

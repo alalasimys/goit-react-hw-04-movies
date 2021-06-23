@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 // import PropTypes from 'prop-types'
 //Fetch
 import { fetchMovieDetails } from "../services/fetchMoviesApi";
+//Routes
+import routes from "../routes";
 
 class MovieDetailsPage extends Component {
   state = {
@@ -30,8 +32,15 @@ class MovieDetailsPage extends Component {
     }
   }
 
-  handleClick = () => {
-    this.props.history.goBack();
+  handleGoBack = () => {
+    const { location, history } = this.props;
+
+    if (location.state && location.state.from) {
+      history.push(location.state.from);
+      return;
+    }
+
+    history.push(routes.home);
   };
 
   render() {
@@ -44,7 +53,6 @@ class MovieDetailsPage extends Component {
       isLoading,
       error,
     } = this.state;
-
     const { url } = this.props.match;
 
     if (isLoading) {
@@ -57,8 +65,8 @@ class MovieDetailsPage extends Component {
 
     return (
       <div>
-        <button type="button" onClick={this.handleClick}>
-          Go Back
+        <button type="button" onClick={this.handleGoBack}>
+          Back to results
         </button>
         <div>
           {poster_path && (

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 //Fetch
 import { fetchSearch } from "../services/fetchMoviesApi";
+//Components
+import MovieList from "../components/MovieList";
 
 export class MoviesPage extends Component {
   state = {
     query: "",
     searchedMovies: [],
+    isLoading: false,
   };
 
   // static propTypes = {};
@@ -35,14 +37,14 @@ export class MoviesPage extends Component {
       pathname: this.props.location.pathname,
       search: params.toString(),
     });
-
+    this.setState({ isLoading: true });
     const searchedMovies = await fetchSearch(this.state.query);
 
-    this.setState({ searchedMovies });
+    this.setState({ searchedMovies, isLoading: false });
   };
 
   render() {
-    const { searchedMovies } = this.state;
+    const { searchedMovies, isLoading } = this.state;
 
     return (
       <>
@@ -60,13 +62,11 @@ export class MoviesPage extends Component {
           </button>
         </form>
         <div>
-          <ul>
-            {searchedMovies.map((item) => (
-              <li key={item.id}>
-                <Link to={`movies/${item.id}`}>{item.title}</Link>
-              </li>
-            ))}
-          </ul>
+          {isLoading ? (
+            <h2>Loading...</h2>
+          ) : (
+            <MovieList movies={searchedMovies} /*from={this.props.location}*/ />
+          )}
         </div>
       </>
     );
