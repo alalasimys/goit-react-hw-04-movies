@@ -20,7 +20,6 @@ class HomePage extends Component {
 
   render() {
     const { movies } = this.state;
-    // console.log(this.props.match.url);
 
     return (
       <div>

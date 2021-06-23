@@ -1,42 +1,32 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 //Fetch
-// import { fetchCast } from "../../services/fetchMoviesApi";
+import { fetchCast } from "../../services/fetchMoviesApi";
 
 class Cast extends Component {
-  static propTypes = {
-    movieId: PropTypes.number.isRequired,
-  };
-  // subscribe = true;
-
-  // state = {
-  //   cast: [],
-  //   isLoading: false,
+  // static propTypes = {
+  //   movieId: PropTypes.number.isRequired,
   // };
 
-  // async componentDidMount() {
-  //   this.setState({ isLoading: true });
+  state = {
+    cast: [],
+    isLoading: false,
+  };
 
-  //   const cast = await fetchCast(this.props.movieId);
+  async componentDidMount() {
+    this.setState({ isLoading: true });
 
-  //   if (this.subscribe) {
-  //     this.setState({ cast: cast, isLoading: false });
-  //   }
-  // }
+    const cast = await fetchCast(this.props.match.params.movieId);
 
-  // componentWillUnmount() {
-  //   this.subscribe = false;
-  // }
+    this.setState({ cast: cast, isLoading: false });
+  }
 
   render() {
-    // const { cast, isLoading } = this.state;
+    const { cast, isLoading } = this.state;
 
-    // if (isLoading) {
-    //   return <h1>loading...</h1>;
-    // }
-
-    const { cast } = this.props;
-    console.log(cast);
+    if (isLoading) {
+      return <h1>loading...</h1>;
+    }
 
     return (
       <div>

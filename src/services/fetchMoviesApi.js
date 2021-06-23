@@ -22,4 +22,11 @@ const fetchCast = async (movieId) => {
   return response.data.cast;
 };
 
-export { fetchTrendingMovies, fetchMovieDetails, fetchCast };
+const fetchReviews = async (movieId) => {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?&language=en-US&page=1`
+  );
+  return response.data.results;
+};
+
+export { fetchTrendingMovies, fetchMovieDetails, fetchCast, fetchReviews };

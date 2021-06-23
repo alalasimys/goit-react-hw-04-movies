@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import PropTypes from 'prop-types'
 //Fetch
-import { fetchMovieDetails, fetchCast } from "../services/fetchMoviesApi";
-//Components
-import Cast from "../components/MovieAdditionalDetails";
+import { fetchMovieDetails } from "../services/fetchMoviesApi";
 
 class MovieDetailsPage extends Component {
   state = {
@@ -25,8 +23,7 @@ class MovieDetailsPage extends Component {
     this.setState({ isLoading: true });
 
     try {
-      const movieDetails = await fetchMovieDetails(movieId);
-
+      const movieDetails = await fetchMovieDetails(Number(movieId));
       this.setState({ ...movieDetails, isLoading: false });
     } catch (error) {
       this.setState({ error, isLoading: false });
@@ -44,7 +41,7 @@ class MovieDetailsPage extends Component {
       error,
     } = this.state;
 
-    const { url, path, params } = this.props.match;
+    const { url } = this.props.match;
 
     if (isLoading) {
       return <h1>loading...</h1>;
@@ -88,13 +85,6 @@ class MovieDetailsPage extends Component {
               </NavLink>
             </li>
           </ul>
-          <Route
-            path={`${path}/cast`}
-            render={async () => {
-              const cast = await fetchCast(Number(params.movieId));
-              return <Cast cast={cast} />;
-            }}
-          />
         </div>
       </div>
     );
