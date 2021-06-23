@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 //Fetch
 import { fetchSearch } from "../services/fetchMoviesApi";
 //Components
@@ -12,7 +12,10 @@ export class MoviesPage extends Component {
     isLoading: false,
   };
 
-  // static propTypes = {};
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
 
   async componentDidMount() {
     const searchParams = new URLSearchParams(this.props.location.search);

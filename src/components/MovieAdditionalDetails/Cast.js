@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 //Fetch
 import { fetchCast } from "../../services/fetchMoviesApi";
 
 class Cast extends Component {
-  // static propTypes = {
-  //   movieId: PropTypes.number.isRequired,
-  // };
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+  };
 
   state = {
     cast: [],

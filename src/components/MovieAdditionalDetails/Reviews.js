@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
 //Fetch
 import { fetchReviews } from "../../services/fetchMoviesApi";
 
 class Reviews extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+  };
+
   state = {
     reviews: [],
     isLoading: false,

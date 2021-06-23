@@ -2,12 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 //Routes
 import routes from "../../routes";
+//styles
+import "./Navigation.scss";
 
 const Navigation = () => {
   return (
     <nav>
-      <ul>
-        <li>
+      <ul className="NavBar">
+        <li className="NavBar--item">
           <NavLink
             exact
             to={routes.home}

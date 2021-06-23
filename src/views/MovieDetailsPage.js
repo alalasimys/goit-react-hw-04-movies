@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-// import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 //Fetch
 import { fetchMovieDetails } from "../services/fetchMoviesApi";
 //Routes
 import routes from "../routes";
 
 class MovieDetailsPage extends Component {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+  };
+
   state = {
     isLoading: false,
     data: {},
@@ -17,7 +23,6 @@ class MovieDetailsPage extends Component {
     genres: [],
     poster_path: "",
   };
-  // static propTypes = {}
 
   async componentDidMount() {
     const { movieId } = this.props.match.params;

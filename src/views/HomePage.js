@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
 
 //Components
 import MovieList from "../components/MovieList";
@@ -11,8 +10,6 @@ class HomePage extends Component {
     movies: [],
     isLoading: false,
   };
-
-  // static propTypes = {};
 
   async componentDidMount() {
     this.setState({ isLoading: true });

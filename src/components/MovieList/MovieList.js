@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+
 //Routes
 import routes from "../../routes";
 //Components
@@ -22,6 +24,11 @@ const MovieList = ({ movies, location }) => {
       ))}
     </ul>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(MovieList);
