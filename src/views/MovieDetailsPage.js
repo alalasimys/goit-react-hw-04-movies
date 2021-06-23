@@ -30,6 +30,10 @@ class MovieDetailsPage extends Component {
     }
   }
 
+  handleClick = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     const {
       title,
@@ -53,6 +57,9 @@ class MovieDetailsPage extends Component {
 
     return (
       <div>
+        <button type="button" onClick={this.handleClick}>
+          Go Back
+        </button>
         <div>
           {poster_path && (
             <img
