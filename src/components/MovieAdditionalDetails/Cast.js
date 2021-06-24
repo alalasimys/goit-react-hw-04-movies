@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 //Fetch
 import { fetchCast } from "../../services/fetchMoviesApi";
+//styles
+import "./Cast.scss";
 
 class Cast extends Component {
   static propTypes = {
@@ -31,9 +33,9 @@ class Cast extends Component {
     return (
       <div>
         {cast.length > 0 ? (
-          <ul>
+          <ul className="Cast">
             {cast.map(({ name, cast_id, character, profile_path }) => (
-              <li key={cast_id}>
+              <li key={cast_id} className="Cast--item">
                 {profile_path ? (
                   <img
                     src={`https://image.tmdb.org/t/p/w200${profile_path}`}
@@ -41,13 +43,12 @@ class Cast extends Component {
                   />
                 ) : (
                   <img
-                    width="200"
-                    src="https://kazut.pl/ru/wp-content/themes/Aether/library/img/default-image.jpg"
+                    src="https://www.proficinema.ru/assets/images/cnt/poster_no.png"
                     alt={name}
                   />
                 )}
 
-                <p>{name}</p>
+                <p className="title">{name}</p>
                 <p>Character: {character}</p>
               </li>
             ))}

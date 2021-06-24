@@ -1,0 +1,60 @@
+.MovieDetailsPage {
+  display: flex;
+  justify-content: space-evenly;
+  width: 1000px;
+  padding: 20px;
+  margin: 30px auto;
+  background: #f0f2f5;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.MovieDetailsPage--description {
+  width: 450px;
+  & .title {
+    font-family: "Big Shoulders Stencil Display", cursive;
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    line-height: 30px;
+  }
+}
+
+.Genres {
+  display: flex;
+}
+
+.Genres--item {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.Additional {
+  display: flex;
+  margin-top: 20px;
+}
+
+.Additional--item {
+  margin-right: 10px;
+  padding: 10px 20px;
+  color: black;
+  background-color: white;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  &__active {
+    color: white;
+    background-color: #1890ff;
+    &:hover,
+    &:focus {
+      color: black;
+    }
+  }
+}

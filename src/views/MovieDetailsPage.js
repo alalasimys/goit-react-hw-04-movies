@@ -6,7 +6,11 @@ import { fetchMovieDetails } from "../services/fetchMoviesApi";
 //Routes
 import routes from "../routes";
 //components
-import BackgroundLayout from "../layout/BackgroundLayout";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+
+//styles
+import "./MovieDetailsPage.scss";
 
 class MovieDetailsPage extends Component {
   static propTypes = {
@@ -17,13 +21,13 @@ class MovieDetailsPage extends Component {
 
   state = {
     isLoading: false,
-    data: {},
     error: null,
     title: null,
     vote_average: null,
     overview: null,
     genres: [],
     poster_path: "",
+    backdrop_path: "",
   };
 
   async componentDidMount() {
@@ -71,44 +75,62 @@ class MovieDetailsPage extends Component {
     }
 
     return (
-      <BackgroundLayout>
-        <button type="button" onClick={this.handleGoBack}>
+      <>
+        <Button type="primary" onClick={this.handleGoBack}>
+          <ArrowLeftOutlined />
           Back to results
-        </button>
-        <div>
-          {poster_path && (
+        </Button>
+
+        <div className="MovieDetailsPage">
+          {poster_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
               alt={title}
             />
+          ) : (
+            <img
+              className="MoviePreview--img"
+              src="https://www.proficinema.ru/assets/images/cnt/poster_no.png"
+              alt={title}
+            />
           )}
-          <h2>{title}</h2>
-          <p>Rate: {vote_average}</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {genres.map(({ id, name }) => (
-              <li key={id}>{name}</li>
-            ))}
-          </ul>
+          <div className="MovieDetailsPage--description">
+            <h2 className="title">{title}</h2>
+            <p>Rate: {vote_average}</p>
+            <h3 className="title">Overview</h3>
+            <p>{overview}</p>
+            <h3 className="title">Genres</h3>
+            <ul className="Genres">
+              {genres.map(({ id, name }) => (
+                <li key={id} className="Genres--item">
+                  {name}
+                </li>
+              ))}
+            </ul>
+            <h4 className="title">Additional information</h4>
+            <ul className="Additional">
+              <li>
+                <NavLink
+                  className="Additional--item"
+                  activeClassName="Additional--item__active"
+                  to={`${url}/cast`}
+                >
+                  Cast
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="Additional--item"
+                  activeClassName="Additional--item__active"
+                  to={`${url}/reviews`}
+                >
+                  Review
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h4>Additional information</h4>
-          <ul>
-            <li>
-              <NavLink className="" activeClassName="" to={`${url}/cast`}>
-                Cast
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="" activeClassName="" to={`${url}/reviews`}>
-                Review
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-      </BackgroundLayout>
+      </>
     );
   }
 }

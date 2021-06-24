@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 //Fetch
 import { fetchReviews } from "../../services/fetchMoviesApi";
+//styles
+import "./Reviews.scss";
 
 class Reviews extends Component {
   static propTypes = {
@@ -26,11 +28,11 @@ class Reviews extends Component {
     const { reviews } = this.state;
     return reviews.length > 0 ? (
       <div>
-        <ul>
+        <ul className="Reviews">
           {reviews.map(({ author, content, id }) => (
-            <li key={id}>
-              <h4>Author: {author}</h4>
-              <p>{content}</p>
+            <li key={id} className="Reviews--item">
+              <h4 className="title">Author: {author}</h4>
+              <p className="text">{content}</p>
             </li>
           ))}
         </ul>

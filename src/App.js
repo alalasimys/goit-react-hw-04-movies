@@ -6,6 +6,7 @@ import FooterLayout from "./components/Footer";
 import Cast from "./components/MovieAdditionalDetails/Cast";
 import Reviews from "./components/MovieAdditionalDetails/Reviews";
 import TwoColumns from "./layout/twoColumns";
+import BackgroundLayout from "./layout/BackgroundLayout";
 import { Layout } from "antd";
 //Routes
 import routes from "./routes";
@@ -41,18 +42,20 @@ const App = () => {
               <Route exact path={routes.home} component={HomePage} />
               <Route exact path={routes.movies} component={MoviesPage} />
               {/* <Route path="/movies/:movieId" component={MovieDetailsPage} /> */}
-              <Route
-                path={routes.movieDetails}
-                render={(props) => {
-                  const { path } = props.match;
-                  return (
-                    <TwoColumns component={<MovieDetailsPage {...props} />}>
-                      <Route path={`${path}/cast`} component={Cast} />
-                      <Route path={`${path}/reviews`} component={Reviews} />
-                    </TwoColumns>
-                  );
-                }}
-              />
+              <BackgroundLayout>
+                <Route
+                  path={routes.movieDetails}
+                  render={(props) => {
+                    const { path } = props.match;
+                    return (
+                      <TwoColumns component={<MovieDetailsPage {...props} />}>
+                        <Route path={`${path}/cast`} component={Cast} />
+                        <Route path={`${path}/reviews`} component={Reviews} />
+                      </TwoColumns>
+                    );
+                  }}
+                />
+              </BackgroundLayout>
               <Redirect to="/" />
             </Switch>
           </Suspense>

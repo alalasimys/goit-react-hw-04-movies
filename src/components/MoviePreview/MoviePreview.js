@@ -5,11 +5,19 @@ import "./MoviePreview.scss";
 const MoviePreview = ({ title, poster, id }) => {
   return (
     <div key={id} className="MoviePreview--container">
-      <img
-        src={`https://image.tmdb.org/t/p/w300${poster}`}
-        alt={title}
-        className="MoviePreview--img"
-      />
+      {poster ? (
+        <img
+          src={`https://image.tmdb.org/t/p/w300${poster}`}
+          alt={title}
+          className="MoviePreview--img"
+        />
+      ) : (
+        <img
+          className="MoviePreview--img"
+          src="https://www.proficinema.ru/assets/images/cnt/poster_no.png"
+          alt={title}
+        />
+      )}
       <h3 className="MoviePreview--title">{title}</h3>
     </div>
   );

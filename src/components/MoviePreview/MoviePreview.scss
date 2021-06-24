@@ -1,22 +1,3 @@
-.MoviePreview--container {
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.5676645658263305) 4%,
-      rgba(9, 9, 121, 0.13629201680672265) 27%
-    );
-  }
-}
-
 .MoviePreview--img {
   border-radius: 0.5rem 0.5rem 0 0;
   width: 100%;
