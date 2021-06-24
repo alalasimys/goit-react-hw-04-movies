@@ -1,13 +1,13 @@
 import React from "react";
-// import PropTypes from "prop-types";
 //Components
 import Navigation from "../Navigation";
+import { Layout } from "antd";
 //styles
-import s from "./Header.module.css";
+const { Header } = Layout;
 
-const Header = () => (
-  <header className={s.header}>
+const HeaderLayout = () => (
+  <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
     <Navigation />
-  </header>
+  </Header>
 );
-export default Header;
+export default HeaderLayout;

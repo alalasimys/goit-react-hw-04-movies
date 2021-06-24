@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { fetchSearch } from "../services/fetchMoviesApi";
 //Components
 import MovieList from "../components/MovieList";
+import BackgroundLayout from "../layout/BackgroundLayout";
 
 export class MoviesPage extends Component {
   state = {
@@ -50,7 +51,7 @@ export class MoviesPage extends Component {
     const { searchedMovies, isLoading } = this.state;
 
     return (
-      <>
+      <BackgroundLayout>
         <form className="MoviesSearch" onSubmit={this.handleSubmit}>
           <input
             value={this.state.query}
@@ -71,7 +72,7 @@ export class MoviesPage extends Component {
             <MovieList movies={searchedMovies} /*from={this.props.location}*/ />
           )}
         </div>
-      </>
+      </BackgroundLayout>
     );
   }
 }

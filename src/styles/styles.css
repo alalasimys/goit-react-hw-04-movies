@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400;700&display=swap");
+
+body {
+  font-family: "Big Shoulders Stencil Display", cursive;
+  font-size: 24px;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -37,4 +46,28 @@ ul {
   margin: 0;
 
   list-style: none;
+}
+
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+.site-layout .site-layout-background {
+  background: #fff;
+  min-height: 100vh;
+}
+
+[data-theme="dark"] .site-layout .site-layout-background {
+  background: #141414;
+}
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+  background-color: #eb2f5c;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: #eb2f5c;
 }

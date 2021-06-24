@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { fetchMovieDetails } from "../services/fetchMoviesApi";
 //Routes
 import routes from "../routes";
+//components
+import BackgroundLayout from "../layout/BackgroundLayout";
 
 class MovieDetailsPage extends Component {
   static propTypes = {
@@ -69,7 +71,7 @@ class MovieDetailsPage extends Component {
     }
 
     return (
-      <div>
+      <BackgroundLayout>
         <button type="button" onClick={this.handleGoBack}>
           Back to results
         </button>
@@ -106,7 +108,7 @@ class MovieDetailsPage extends Component {
             </li>
           </ul>
         </div>
-      </div>
+      </BackgroundLayout>
     );
   }
 }

@@ -2,8 +2,11 @@ import React, { Component } from "react";
 
 //Components
 import MovieList from "../components/MovieList";
+import BackgroundLayout from "../layout/BackgroundLayout";
 //Fetch
 import { fetchTrendingMovies } from "../services/fetchMoviesApi";
+//Style
+import "./HomePage.scss";
 
 class HomePage extends Component {
   state = {
@@ -21,14 +24,14 @@ class HomePage extends Component {
   render() {
     const { movies, isLoading } = this.state;
     return (
-      <div>
-        <h2>Trending today</h2>
+      <BackgroundLayout>
+        <h2 className="HomePage--title">Trending today</h2>
         {isLoading ? (
           <h2>Loading...</h2>
         ) : (
           <MovieList movies={movies} /*from={this.props.location}*/ />
         )}
-      </div>
+      </BackgroundLayout>
     );
   }
 }
