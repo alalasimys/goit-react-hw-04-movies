@@ -8,11 +8,13 @@ import Reviews from "./components/MovieAdditionalDetails/Reviews";
 import TwoColumns from "./layout/twoColumns";
 import BackgroundLayout from "./layout/BackgroundLayout";
 import { Layout } from "antd";
+import Loader from "react-loader-spinner";
 //Routes
 import routes from "./routes";
 //styles
 import "./styles/styles.css";
 import "antd/dist/antd.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const { Content } = Layout;
 
@@ -37,7 +39,17 @@ const App = () => {
           className="site-layout"
           style={{ padding: "0 50px", marginTop: 64 }}
         >
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense
+            fallback={
+              <Loader
+                className="Loader"
+                type="BallTriangle"
+                color="#001529"
+                height={100}
+                width={100}
+              />
+            }
+          >
             <Switch>
               <Route exact path={routes.home} component={HomePage} />
               <Route exact path={routes.movies} component={MoviesPage} />

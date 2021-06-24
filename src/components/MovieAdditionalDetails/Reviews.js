@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { fetchReviews } from "../../services/fetchMoviesApi";
 //styles
 import "./Reviews.scss";
+//loader
+import Loader from "react-loader-spinner";
 
 class Reviews extends Component {
   static propTypes = {
@@ -25,7 +27,18 @@ class Reviews extends Component {
   }
 
   render() {
-    const { reviews } = this.state;
+    const { reviews, isLoading } = this.state;
+    if (isLoading) {
+      return (
+        <Loader
+          className="Loader"
+          type="BallTriangle"
+          color="#001529"
+          height={100}
+          width={100}
+        />
+      );
+    }
     return reviews.length > 0 ? (
       <div>
         <ul className="Reviews">
@@ -38,7 +51,7 @@ class Reviews extends Component {
         </ul>
       </div>
     ) : (
-      <div>
+      <div style={{ textAlign: "center" }}>
         <p>We don't have any review for this movie.</p>
       </div>
     );

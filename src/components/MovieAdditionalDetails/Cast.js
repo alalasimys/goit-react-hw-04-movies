@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { fetchCast } from "../../services/fetchMoviesApi";
 //styles
 import "./Cast.scss";
+//loader
+import Loader from "react-loader-spinner";
 
 class Cast extends Component {
   static propTypes = {
@@ -27,7 +29,15 @@ class Cast extends Component {
     const { cast, isLoading } = this.state;
 
     if (isLoading) {
-      return <h1>loading...</h1>;
+      return (
+        <Loader
+          className="Loader"
+          type="BallTriangle"
+          color="#001529"
+          height={100}
+          width={100}
+        />
+      );
     }
 
     return (
@@ -54,7 +64,7 @@ class Cast extends Component {
             ))}
           </ul>
         ) : (
-          <div>
+          <div style={{ textAlign: "center" }}>
             <p>We don't have any information about cast for this movie.</p>
           </div>
         )}

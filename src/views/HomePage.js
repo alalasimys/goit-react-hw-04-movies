@@ -3,6 +3,8 @@ import React, { Component } from "react";
 //Components
 import MovieList from "../components/MovieList";
 import BackgroundLayout from "../layout/BackgroundLayout";
+//loader
+import Loader from "react-loader-spinner";
 //Fetch
 import { fetchTrendingMovies } from "../services/fetchMoviesApi";
 //Style
@@ -27,7 +29,13 @@ class HomePage extends Component {
       <BackgroundLayout>
         <h2 className="HomePage--title">Trending today</h2>
         {isLoading ? (
-          <h2>Loading...</h2>
+          <Loader
+            className="Loader"
+            type="BallTriangle"
+            color="#001529"
+            height={100}
+            width={100}
+          />
         ) : (
           <MovieList movies={movies} /*from={this.props.location}*/ />
         )}

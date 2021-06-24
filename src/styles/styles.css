@@ -63,11 +63,9 @@ ul {
 [data-theme="dark"] .site-layout .site-layout-background {
   background: #141414;
 }
-.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
-  background-color: #eb2f5c;
-}
 
-.ant-menu.ant-menu-dark .ant-menu-item-selected,
-.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-  background-color: #eb2f5c;
+.Loader {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
 }

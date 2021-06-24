@@ -5,6 +5,11 @@ import { fetchSearch } from "../services/fetchMoviesApi";
 //Components
 import MovieList from "../components/MovieList";
 import BackgroundLayout from "../layout/BackgroundLayout";
+import { Button } from "antd";
+//loader
+import Loader from "react-loader-spinner";
+//style
+import "./MoviesSearch.scss";
 
 export class MoviesPage extends Component {
   state = {
@@ -60,6 +65,7 @@ export class MoviesPage extends Component {
             type="text"
             autoComplete="off"
             autoFocus
+            placeholder="Please enter your query"
           />
           <button type="submit" className="MoviesSearch-button">
             <span className="MoviesSearch-button-label">Search</span>
@@ -67,7 +73,13 @@ export class MoviesPage extends Component {
         </form>
         <div>
           {isLoading ? (
-            <h2>Loading...</h2>
+            <Loader
+              className="Loader"
+              type="BallTriangle"
+              color="#001529"
+              height={100}
+              width={100}
+            />
           ) : (
             <MovieList movies={searchedMovies} /*from={this.props.location}*/ />
           )}

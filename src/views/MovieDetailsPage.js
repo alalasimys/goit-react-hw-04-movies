@@ -8,6 +8,8 @@ import routes from "../routes";
 //components
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+//loader
+import Loader from "react-loader-spinner";
 
 //styles
 import "./MovieDetailsPage.scss";
@@ -64,10 +66,19 @@ class MovieDetailsPage extends Component {
       isLoading,
       error,
     } = this.state;
+
     const { url } = this.props.match;
 
     if (isLoading) {
-      return <h1>loading...</h1>;
+      return (
+        <Loader
+          className="Loader"
+          type="BallTriangle"
+          color="#001529"
+          height={100}
+          width={100}
+        />
+      );
     }
 
     if (error) {
