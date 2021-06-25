@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400;700&display=swap");
 
 body {
-  font-family: "Big Shoulders Stencil Display", cursive;
-  font-size: 24px;
-  letter-spacing: 3px;
+  /* font-family: "Big Shoulders Stencil Display", cursive; */
+  font-size: 16px;
+  letter-spacing: 1px;
   font-weight: 400;
 }
 

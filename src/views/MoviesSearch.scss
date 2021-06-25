@@ -1,18 +1,21 @@
 .MoviesSearch {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 40px;
 }
 
 .MoviesSearch-input {
   width: 300px;
-  padding: 10px 15px;
+  height: 45px;
+  font-size: 18px;
+  padding: 5px 15px;
   border-radius: 4px;
 }
 
 .MoviesSearch-button {
   width: 100px;
   height: 45px;
-  font-size: 16px;
+  font-size: 18px;
   border: none;
   color: white;
   cursor: pointer;
