@@ -1,0 +1,43 @@
+.Notification {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #001529;
+}
+
+// .image-thumb {
+//   width: 500px;
+//   > img {
+//     object-fit: contain;
+//   }
+// }
+
+.Notification--image {
+  position: absolute;
+  width: 600px;
+  top: -15%;
+}
+
+.Notification--content {
+  position: absolute;
+  top: 60%;
+  color: white;
+  > .title {
+    color: inherit;
+    font-family: "Big Shoulders Stencil Display", cursive;
+    font-weight: 700;
+    font-size: 44px;
+    text-align: center;
+  }
+  > .text {
+    color: inherit;
+    font-family: "Big Shoulders Stencil Display", cursive;
+    font-weight: 400;
+    font-size: 34px;
+    text-align: center;
+  }
+}

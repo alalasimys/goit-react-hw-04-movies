@@ -5,7 +5,6 @@ import { fetchSearch } from "../services/fetchMoviesApi";
 //Components
 import MovieList from "../components/MovieList";
 import BackgroundLayout from "../layout/BackgroundLayout";
-import { Button } from "antd";
 //loader
 import Loader from "react-loader-spinner";
 //style
@@ -16,6 +15,7 @@ export class MoviesPage extends Component {
     query: "",
     searchedMovies: [],
     isLoading: false,
+    error: false,
   };
 
   static propTypes = {
@@ -46,14 +46,19 @@ export class MoviesPage extends Component {
       pathname: this.props.location.pathname,
       search: params.toString(),
     });
+
     this.setState({ isLoading: true });
     const searchedMovies = await fetchSearch(this.state.query);
 
-    this.setState({ searchedMovies, isLoading: false });
+    if (searchedMovies.length === 0) {
+      return this.setState({ error: true, isLoading: false, query: "" });
+    }
+
+    return this.setState({ searchedMovies, isLoading: false, error: false });
   };
 
   render() {
-    const { searchedMovies, isLoading } = this.state;
+    const { searchedMovies, isLoading, error } = this.state;
 
     return (
       <BackgroundLayout>
@@ -81,7 +86,7 @@ export class MoviesPage extends Component {
               width={100}
             />
           ) : (
-            <MovieList movies={searchedMovies} /*from={this.props.location}*/ />
+            <MovieList {...this.props} movies={searchedMovies} error={error} />
           )}
         </div>
       </BackgroundLayout>

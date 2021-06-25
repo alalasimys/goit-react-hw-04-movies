@@ -67,6 +67,7 @@ class MovieDetailsPage extends Component {
       error,
     } = this.state;
 
+    const { location } = this.props;
     const { url } = this.props.match;
 
     if (isLoading) {
@@ -124,7 +125,10 @@ class MovieDetailsPage extends Component {
                 <NavLink
                   className="Additional--item"
                   activeClassName="Additional--item__active"
-                  to={`${url}/cast`}
+                  to={{
+                    pathname: `${url}/cast`,
+                    state: { from: location.state.from },
+                  }}
                 >
                   Cast
                 </NavLink>
@@ -133,7 +137,10 @@ class MovieDetailsPage extends Component {
                 <NavLink
                   className="Additional--item"
                   activeClassName="Additional--item__active"
-                  to={`${url}/reviews`}
+                  to={{
+                    pathname: `${url}/reviews`,
+                    state: { from: location.state.from },
+                  }}
                 >
                   Review
                 </NavLink>

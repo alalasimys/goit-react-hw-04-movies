@@ -6,12 +6,15 @@ import PropTypes from "prop-types";
 import routes from "../../routes";
 //Components
 import MoviePreview from "../MoviePreview";
+import Notification from "../Notification";
 //styles
 import "./MovieList.scss";
 
-const MovieList = ({ movies, location }) => {
+const MovieList = ({ movies, location, error }) => {
   // console.log(`movies`, movies);
-  return (
+  return error ? (
+    <Notification />
+  ) : (
     <ul className="MovieList">
       {movies.map((movie) => (
         <li key={movie.id} className="MovieList--item">
