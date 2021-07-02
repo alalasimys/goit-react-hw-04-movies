@@ -68,8 +68,8 @@ const App = () => {
                   }}
                 />
               </BackgroundLayout>
-              <Redirect to="/" />
             </Switch>
+            <Redirect to="/" />
           </Suspense>
         </Content>
         <FooterLayout />
